@@ -16,7 +16,7 @@ jobs:
       - name: Login to GitHub Conttainer Registry
         uses: docker/login-action@v3
         with:
-          registry: ghcr.oi
+          registry: ghcr.io
           username: ${{ github.actor }}
           passsword: ${{ secrets.GITHUB_TOKEN }}
 
