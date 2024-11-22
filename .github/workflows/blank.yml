@@ -12,5 +12,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Login to GitHub Conttainer Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.oi
+          username: ${{ github.actor }}
+          passsword: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build docker image
         run: docker build -t ghcr.io/kirpich-y/18.11.24/student-node-395:latest ./node/
+
+      - name: Push docker image
+        run: docker push ghcr.io/kirpich-y/18.11.24/student-node-395:latest
